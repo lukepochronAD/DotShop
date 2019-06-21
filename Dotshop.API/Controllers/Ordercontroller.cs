@@ -17,12 +17,10 @@ namespace Dotshop.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateNew(Order order)
+        public async Task<IActionResult> CreateNewOrder(Order order)
         {
             var result = await (this.OrderRepository.CreateNew(order));
-
-            return this.CreatedAtAction(nameof(GetById), new { id = result.OrderId }, result);
-
+            return this.CreatedAtAction(nameof(GetOrderById), new { id = result.OrderId }, result);
         }
 
         private IOrderRepository OrderRepository { get; }
@@ -35,7 +33,7 @@ namespace Dotshop.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetOrderById(int id)
         {
             var result = await ((this.OrderRepository.GetById(id)));
             if (result == null)
@@ -46,11 +44,11 @@ namespace Dotshop.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> ChangePaidStatus([FromBody] Order order, bool paid)
+        public async Task<IActionResult> ChangeOrderStatus([FromBody] Order order, bool paid)
         {
             var result = await (this.OrderRepository.ChangeStatus(order, paid));
 
-            if (result == false)
+            if (!result)
             {
                 return this.NotFound();
             }
@@ -62,7 +60,7 @@ namespace Dotshop.API.Controllers
         {
             var result = await (this.OrderRepository.Delete(id));
 
-            if (result == false)
+            if (!result)
             {
                 return this.NotFound();
             }

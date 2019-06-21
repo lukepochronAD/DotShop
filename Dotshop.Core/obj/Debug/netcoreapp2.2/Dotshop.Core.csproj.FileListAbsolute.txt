@@ -6,3 +6,4 @@ C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.C
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.Core.AssemblyInfo.cs
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.Core.dll
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.Core.pdb
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.Core.csprojAssemblyReference.cache

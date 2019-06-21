@@ -24,12 +24,10 @@ namespace Dotshop.Infrastructure
                           SELECT * from dbo.Items
                           WHERE ItemId = SCOPE_IDENTITY();";
 
-
             using (var connection = this.DbConnectionFactory.Connection())
             {
                 return await connection.QueryFirstOrDefaultAsync<Item>(query, new { item.ItemName, item.ItemDescription, Price = item.ItemPrice});
             }
-
         }
 
         public async Task<IEnumerable<Item>> GetAllItems()
@@ -61,15 +59,11 @@ namespace Dotshop.Infrastructure
 
         public async Task<Item> GetById(int ItemId)
         {
-
             var query = $@"SELECT * FROM dbo.Items WHERE ItemId = @ItemId ";
-
             using (var connection = this.DbConnectionFactory.Connection())
             {
                 return await connection.QueryFirstOrDefaultAsync<Item>(query, new { ItemId});
             }
-
-
         }
 
         public async Task<bool> EditItem(Item item)
@@ -78,7 +72,6 @@ namespace Dotshop.Infrastructure
             {
                 return false;
             }
-
 
             var query = @"UPDATE dbo.Items
                           SET ItemName = @ItemName, ItemDescription = @ItemDescription, Price = @ItemPrice
@@ -91,9 +84,7 @@ namespace Dotshop.Infrastructure
                 return (rowsReturned > 0);
             }
 
-
         }
-
 
         public async Task<bool> Delete(int ItemId)
         {
@@ -110,7 +101,6 @@ namespace Dotshop.Infrastructure
 
 
         }
-
 
     }
 }

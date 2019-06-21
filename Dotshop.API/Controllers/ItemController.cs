@@ -14,21 +14,17 @@ namespace Dotshop.API.Controllers
         public ItemController(IItemRepository _itemrepository)
         {
             this.ItemRepository = _itemrepository;
-
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllItems()
         {
             var result = await (this.ItemRepository.GetAllItems());
-
             return this.Ok(result);
-
-
         }
 
         [HttpGet("{id}")] // That's for CreatedAtAction confirmation
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetItemById(int id)
         {
             var result = await ((this.ItemRepository.GetById(id)));
             if (result == null)
@@ -43,7 +39,7 @@ namespace Dotshop.API.Controllers
         {
             var result = await (this.ItemRepository.CreateNew(newitem));
 
-            return this.CreatedAtAction(nameof(GetById), new { id = result.ItemId }, result);
+            return this.CreatedAtAction(nameof(GetItemById), new { id = result.ItemId }, result);
         }
 
         [HttpPut]
@@ -63,12 +59,11 @@ namespace Dotshop.API.Controllers
         {
             var result = await (this.ItemRepository.Delete(id));
 
-            if (result == false)
+            if (!result)
             {
                 return this.NotFound();
             }
             return this.Ok(result);
         }
-
     }
 }

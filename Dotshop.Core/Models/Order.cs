@@ -14,6 +14,5 @@ namespace Dotshop.Core.Models
         public bool OrderPaid { get; set; }
 
         public double TotalDue { get; set; }
-        // dbo.Orders
     }
 }

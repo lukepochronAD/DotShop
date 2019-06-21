@@ -4,7 +4,6 @@ namespace Dotshop.Core.Models
 {
     public class Item
     {
-        // dbo.Items
 
         public int ItemId { get; set; }
 

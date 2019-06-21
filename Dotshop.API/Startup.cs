@@ -71,6 +71,5 @@ namespace Dotshop.API
             });
             app.UseMvc();
         }
-    }
-    
+    }   
 }

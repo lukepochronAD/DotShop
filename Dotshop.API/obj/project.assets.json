@@ -4524,8 +4524,7 @@
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
           "Dapper": "1.60.6",
-          "Dotshop.Core": "1.0.0",
-          "System.Data.SqlClient": "4.6.1"
+          "Dotshop.Core": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Dotshop.Infrastructure.dll": {}

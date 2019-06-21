@@ -82,37 +82,28 @@ namespace Dotshop.Infrastructure
                 return false;
             }
 
-
             var query = @"UPDATE dbo.Orders
                           SET OrderPaid = @OrderPaid
                           WHERE OrderId = @OrderId;;";
-
 
             using (var connection = this.DbConnectionFactory.Connection())
             {
                 var rowsReturned = (await connection.ExecuteAsync(query, new {order.OrderId, OrderPaid }));
                 return (rowsReturned > 0);
             }
-
-
         }
 
         public async Task<bool> Delete(int OrderId)
         {
 
             var deleteOrders = @"DELETE FROM dbo.Orders
-                          WHERE OrderId = @OrderId;";
-
+                                 WHERE OrderId = @OrderId;";
 
             using (var connection = this.DbConnectionFactory.Connection())
             {
                 var result1 = (await connection.ExecuteAsync(deleteOrders, new { OrderId }));
                 return (result1 > 0);
             }
-
-
         }
-
-
     }
 }

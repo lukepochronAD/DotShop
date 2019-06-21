@@ -13,8 +13,6 @@ namespace Dotshop.Core.Interfaces
 
         Task<Order> CreateNew(Order order);
 
-        //Task<Order> ChangeStatus(int id, byte status);
-
         Task<bool> ChangeStatus(Order order, bool paid);
 
         Task<bool> Delete(int orderId);
