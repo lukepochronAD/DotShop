@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dotshop.Core.Models;
 
@@ -9,7 +7,7 @@ namespace Dotshop.Core.Interfaces
     public interface IOrderRepository
     {
 
-        Task<IEnumerable<Order>> GetAll();
+        Task<IEnumerable<Order>> GetAllOrders();
 
         Task<Order> GetById(int id);
 

@@ -1,10 +1,7 @@
-﻿using System.Data.Common;
-using System.Data.SqlClient;
-
-namespace Dotshop.Core
+﻿namespace Dotshop.Core
 {
-    public interface IConnectionFactory
+    public interface IConnectionFactory <T>
     {
-        SqlConnection Connection();
+        T Connection();
     }
 }
