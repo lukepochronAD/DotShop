@@ -16,11 +16,25 @@ namespace Dotshop.Infrastructure
             this.DbConnectionFactory = dbConnectionFactory;
         }
 
+        public async Task<Order> CreateNew(Order order)
+        {
+
+            var query = @"INSERT INTO dbo.Orders (OrderDate, OrderPaid)
+                          VALUES(@OrderDate, @OrderPaid);
+                          SELECT * from dbo.Orders
+                          WHERE OrderId = SCOPE_IDENTITY();";
+
+
+            using (var connection = this.DbConnectionFactory.Connection())
+            {
+                return await connection.QueryFirstOrDefaultAsync<Order>(query, new { order.OrderDate, order.OrderPaid });
+            }
+
+        }
 
         public async Task<IEnumerable<Order>> GetAllOrders()
         {
 
-         
 
             using (SqlConnection conn = this.DbConnectionFactory.Connection())
             {
@@ -61,33 +75,39 @@ namespace Dotshop.Infrastructure
 
         }
 
-        public async Task<Order> CreateNew(Order order)
+        public async Task<bool> ChangeStatus(Order order, bool OrderPaid)
         {
+            if (order == null)
+            {
+                return false;
+            }
 
-            var query = @"INSERT INTO dbo.Orders (OrderDate, OrderPaid)
-                          VALUES(@OrderDate, @OrderPaid);
-                          SELECT * from dbo.Orders
-                          WHERE OrderId = SCOPE_IDENTITY();";
+
+            var query = @"UPDATE dbo.Orders
+                          SET OrderPaid = @OrderPaid
+                          WHERE OrderId = @OrderId;;";
 
 
             using (var connection = this.DbConnectionFactory.Connection())
             {
-                 return await connection.QueryFirstOrDefaultAsync<Order>(query, new {order.OrderDate, order.OrderPaid });
+                var rowsReturned = (await connection.ExecuteAsync(query, new {order.OrderId, OrderPaid }));
+                return (rowsReturned > 0);
             }
+
 
         }
 
         public async Task<bool> Delete(int OrderId)
         {
 
-            var query = @"DELETE FROM dbo.Orders
+            var deleteOrders = @"DELETE FROM dbo.Orders
                           WHERE OrderId = @OrderId;";
 
 
             using (var connection = this.DbConnectionFactory.Connection())
             {
-                var rowsReturned = (await connection.ExecuteAsync(query, new { OrderId }));
-                return (rowsReturned > 0);
+                var result1 = (await connection.ExecuteAsync(deleteOrders, new { OrderId }));
+                return (result1 > 0);
             }
 
 

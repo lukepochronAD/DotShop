@@ -16,6 +16,15 @@ namespace Dotshop.API.Controllers
             this.OrderRepository = _orderRepository;
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateNew(Order order)
+        {
+            var result = await (this.OrderRepository.CreateNew(order));
+
+            return this.CreatedAtAction(nameof(GetById), new { id = result.OrderId }, result);
+
+        }
+
         private IOrderRepository OrderRepository { get; }
 
         [HttpGet]
@@ -28,22 +37,38 @@ namespace Dotshop.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var result = await((this.OrderRepository.GetById(id)));
-            if(result == null)
+            var result = await ((this.OrderRepository.GetById(id)));
+            if (result == null)
             {
-                return NotFound();
+                return this.NotFound();
             }
             return this.Ok(result);
-
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateNew(Order order)
+
+        [HttpPut]
+        public async Task<IActionResult> ChangePaidStatus([FromBody] Order order, bool paid)
         {
-            var result = await (this.OrderRepository.CreateNew(order));
+            var result = await (this.OrderRepository.ChangeStatus(order, paid));
 
-            return this.CreatedAtAction(nameof(GetById), new { id = result.OrderId }, result);
-
+            if (result == false)
+            {
+                return this.NotFound();
+            }
+            return this.Ok(result);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var result = await (this.OrderRepository.Delete(id));
+
+            if (result == false)
+            {
+                return this.NotFound();
+            }
+            return this.Ok(result);
+        }
+
     }
 }
 
