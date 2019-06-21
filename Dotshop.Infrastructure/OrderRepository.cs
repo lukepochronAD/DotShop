@@ -76,6 +76,23 @@ namespace Dotshop.Infrastructure
             }
 
         }
-        
+
+        public async Task<bool> Delete(int OrderId)
+        {
+
+            var query = @"DELETE FROM dbo.Orders
+                          WHERE OrderId = @OrderId;";
+
+
+            using (var connection = this.DbConnectionFactory.Connection())
+            {
+                var rowsReturned = (await connection.ExecuteAsync(query, new { OrderId }));
+                return (rowsReturned > 0);
+            }
+
+
+        }
+
+
     }
 }
