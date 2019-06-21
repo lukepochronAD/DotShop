@@ -11,7 +11,7 @@ namespace Dotshop.Core.Interfaces
 
         Task<Order> GetById(int id);
 
-        //Task<Order> CreateNew(Order);
+        Task<Order> CreateNew(Order order);
 
         //Task<Order> ChangeStatus(int id, byte status);
 

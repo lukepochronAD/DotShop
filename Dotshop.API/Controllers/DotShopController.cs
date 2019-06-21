@@ -1,4 +1,6 @@
-﻿using Dotshop.Core.Interfaces;
+﻿using System.Threading.Tasks;
+using Dotshop.Core.Interfaces;
+using Dotshop.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dotshop.API.Controllers
@@ -35,6 +37,14 @@ namespace Dotshop.API.Controllers
         public IActionResult GetById(int id)
         {
            return this.Ok(this.OrderRepository.GetById(id).Result);
+
+        }
+        [HttpPost("orders")]
+        public async Task<IActionResult> CreateNew(Order order)
+        {
+            var result = await (this.OrderRepository.CreateNew(order));
+
+            return this.CreatedAtAction(nameof(GetById), new { id = result.OrderId }, result);
 
         }
     }
