@@ -1,7 +1,6 @@
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\bin\Debug\netcoreapp2.2\Dotshop.Core.deps.json
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\bin\Debug\netcoreapp2.2\Dotshop.Core.dll
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\bin\Debug\netcoreapp2.2\Dotshop.Core.pdb
-C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.Core.csprojAssemblyReference.cache
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.Core.csproj.CoreCompileInputs.cache
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.Core.AssemblyInfoInputs.cache
 C:\Users\PochronL\Desktop\DotShop\Dotshop.Core\obj\Debug\netcoreapp2.2\Dotshop.Core.AssemblyInfo.cs

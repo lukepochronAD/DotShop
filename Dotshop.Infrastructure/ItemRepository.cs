@@ -9,10 +9,10 @@ namespace Dotshop.Infrastructure
 {
     public class ItemRepository : IItemRepository
     {
-        private IConnectionFactory<SqlConnection> dbconnectionfactory { get; }
+        private IConnectionFactory<SqlConnection> DbConnectionFactory { get; }
         public ItemRepository(IConnectionFactory<SqlConnection> dbConnectionFactory)
         {
-            this.dbconnectionfactory = dbConnectionFactory;
+            this.DbConnectionFactory = dbConnectionFactory;
         }
 
 
@@ -20,7 +20,7 @@ namespace Dotshop.Infrastructure
         {
 
             List<Item> allItems = new List<Item>();
-            using (SqlConnection conn = this.dbconnectionfactory.Connection())
+            using (SqlConnection conn = this.DbConnectionFactory.Connection())
             {
 
 

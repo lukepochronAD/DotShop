@@ -9,10 +9,10 @@ namespace Dotshop.Infrastructure
 {
     public class OrderRepository : IOrderRepository
     {
-        private IConnectionFactory<SqlConnection> dbconnectionfactory { get; }
+        private IConnectionFactory<SqlConnection> DbConnectionFactory { get; }
         public OrderRepository(IConnectionFactory<SqlConnection> dbConnectionFactory)
         {
-            this.dbconnectionfactory = dbConnectionFactory;
+            this.DbConnectionFactory = dbConnectionFactory;
         }
 
 
@@ -21,7 +21,7 @@ namespace Dotshop.Infrastructure
 
             var allOrders = new List<Order>();
 
-            using (SqlConnection conn = this.dbconnectionfactory.Connection())
+            using (SqlConnection conn = this.DbConnectionFactory.Connection())
             {
 
                 var query = @"SELECT o.OrderId, o.OrderDate, o.OrderPaid, SUM(i.Price) AS 'TotalDue' FROM dbo.Orders o
@@ -63,7 +63,9 @@ namespace Dotshop.Infrastructure
         public async Task<Order> GetById(int id)
         {
 
-            using (SqlConnection conn = this.dbconnectionfactory.Connection())
+            var result = new List<Order>();
+
+            using (SqlConnection conn = this.DbConnectionFactory.Connection())
             {
 
                 var query = $@"SELECT o.OrderId, o.OrderDate, o.OrderPaid, SUM(i.Price) AS 'TotalDue' FROM dbo.Orders o
@@ -86,13 +88,13 @@ namespace Dotshop.Infrastructure
                         var orderpaid = reader.GetBoolean(2);
                         double totaldue = reader.GetDouble(3);
 
-                        allOrders.Add(new Order() { OrderId = orderid, OrderDate = datetime, OrderPaid = orderpaid, TotalDue = totaldue });
+                        result.Add(new Order() { OrderId = orderid, OrderDate = datetime, OrderPaid = orderpaid, TotalDue = totaldue });
                     }
                 }
 
-
-                return allOrders;
+                return result[0];
 
             }
+        }
     }
-    }
+}

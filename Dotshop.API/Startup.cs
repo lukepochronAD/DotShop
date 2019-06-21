@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Dotshop.API
 {
@@ -15,7 +16,7 @@ namespace Dotshop.API
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -30,10 +31,17 @@ namespace Dotshop.API
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+   
+
             services.AddSingleton<IConnectionFactory<SqlConnection>, SQLConnectionFactory>();
 
             services.AddTransient<IItemRepository, ItemRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Dotshop", Version = "v1" });
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -55,8 +63,14 @@ namespace Dotshop.API
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dotshop V1");
+                c.RoutePrefix = string.Empty;
+            });
             app.UseMvc();
         }
     }
+    
 }
