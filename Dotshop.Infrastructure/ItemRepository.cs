@@ -72,6 +72,29 @@ namespace Dotshop.Infrastructure
 
         }
 
+        public async Task<bool> EditItem(Item item)
+        {
+            if (item == null)
+            {
+                return false;
+            }
+
+
+            var query = @"UPDATE dbo.Items
+                          SET ItemName = @ItemName, ItemDescription = @ItemDescription, Price = @ItemPrice
+                          WHERE ItemId = @ItemId;";
+
+
+            using (var connection = this.DbConnectionFactory.Connection())
+            {
+                var rowsReturned = (await connection.ExecuteAsync(query, new { item.ItemId, item.ItemName, item.ItemDescription, item.ItemPrice }));
+                return (rowsReturned > 0);
+            }
+
+
+        }
+
+
         public async Task<bool> Delete(int ItemId)
         {
 

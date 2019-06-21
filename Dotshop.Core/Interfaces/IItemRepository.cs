@@ -13,6 +13,8 @@ namespace Dotshop.Core.Interfaces
 
         Task<Item> GetById(int id);
 
+        Task<bool> EditItem(Item newitem);
+
         Task<bool> Delete(int id);
     }
 }

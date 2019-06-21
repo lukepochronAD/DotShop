@@ -17,7 +17,6 @@ namespace Dotshop.API.Controllers
 
         }
 
-
         [HttpGet]
         public async Task<IActionResult> GetAllItems()
         {
@@ -47,8 +46,29 @@ namespace Dotshop.API.Controllers
             return this.CreatedAtAction(nameof(GetById), new { id = result.ItemId }, result);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> EditItem(Item newitem)
+        {
+            var result = await (this.ItemRepository.EditItem(newitem));
 
+            if (!result)
+            {
+                return this.BadRequest();
+            }
+            return this.Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            var result = await (this.ItemRepository.Delete(id));
+
+            if (result == false)
+            {
+                return this.NotFound();
+            }
+            return this.Ok(result);
+        }
 
     }
 }
-
