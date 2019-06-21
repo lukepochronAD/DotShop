@@ -8,10 +8,10 @@ namespace Dotshop.Core.Models
     {
         // dbo.Items
 
-        int Id { get; set; }
-        string ItemName { get; set; }
-        string ItemDescription { get; set; }
-        float Price { get; set; }
+        public int ItemId { get; set; }
+        public string ItemName { get; set; }
+        public string ItemDescription { get; set; }
+        public float ItemPrice { get; set; }
 
     }
 }

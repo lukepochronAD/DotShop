@@ -1,0 +1,12 @@
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\bin\Debug\netcoreapp2.2\Dotshop.Infrastructure.deps.json
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\bin\Debug\netcoreapp2.2\Dotshop.Infrastructure.dll
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\bin\Debug\netcoreapp2.2\Dotshop.Infrastructure.pdb
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\bin\Debug\netcoreapp2.2\Dotshop.Core.dll
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\bin\Debug\netcoreapp2.2\Dotshop.Core.pdb
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\obj\Debug\netcoreapp2.2\Dotshop.Infrastructure.csprojAssemblyReference.cache
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\obj\Debug\netcoreapp2.2\Dotshop.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\obj\Debug\netcoreapp2.2\Dotshop.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\obj\Debug\netcoreapp2.2\Dotshop.Infrastructure.AssemblyInfo.cs
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\obj\Debug\netcoreapp2.2\Dotshop.Infrastructure.csproj.CopyComplete
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\obj\Debug\netcoreapp2.2\Dotshop.Infrastructure.dll
+C:\Users\PochronL\Desktop\DotShop\Dotshop.Infrastructure\obj\Debug\netcoreapp2.2\Dotshop.Infrastructure.pdb
